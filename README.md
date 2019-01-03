@@ -2,6 +2,8 @@
 
 "Formatos electrónicos" es un API (Application programming interface) desarrollada por DIgipro - The digital evolution company para la generación, edición, visualización y envío de todo tipo de formatos (documentos de tipo formulario) para el procesamiento de datos adecuado sin la necesidad de utilizar papel (paperless), solamente con el uso de un dispositivo móvil IOS (iPhone / iPad) podrá generar formularios que se adecuen a las necesidades de su empresa.
 
+[TOC]
+
 ## API DGFmwrk
 
 El API es público y gratuito para su uso comercial, pero para poder usar el API es necesario tener una licencia. Deberá de ponerse en contacto con uno de nuestros asesores de venta y ellos le proporcionarán la licencia y todo lo que debe de saber para la configuración de sus formatos electrónicos.
@@ -362,7 +364,7 @@ Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicaci�
 </plist>
 ```
 
-### Uso
+### Uso básico
 
 Deberás de inicializar el API en tu "AppDelegate.swift" escribiendo el siguiente código:
 
@@ -375,6 +377,11 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
         ConfigurationManager.shared.appDelegate = self
         ConfigurationManager.shared.configure()
         return true
+    }
+
+func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        ConfigurationManager.shared.utilities.checkPreferences()
     }
 ```
 
