@@ -12,3 +12,4 @@ Instalación
 
 Arrastrar el archivo "DGFmwrk.framework" a tu proyecto en Xcode, depués dirígete a la parte de Targets en tu proyecto y agrega en el apartado de "Embedded Binaries" y "Linked Frameworks and Libraries" el framework que acabas de arrastrar a tu proyecto. Deberás de usar el icono de + para agregar el framework a cada uno de los apartados, justo como se muestra en la siguiente imagen.
 
+![alt text](http://url/to/img.png)
