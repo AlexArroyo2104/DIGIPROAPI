@@ -1,24 +1,3 @@
-API Formatos electrónicos
-
-"Formatos electrónicos" es un API (Application programming interface) desarrollada por DIgipro - The digital evolution company para la generación, edición, visualización y envío de todo tipo de formatos (documentos de tipo formulario) para el procesamiento de datos adecuado sin la necesidad de utilizar papel (paperless), solamente con el uso de un dispositivo móvil IOS (iPhone / iPad) podrá generar formularios que se adecuen a las necesidades de su empresa.
-
-## API DGFmwrk
-
-El API es público y gratuito para su uso comercial, pero para poder usar el API es necesario tener una licencia. Deberá de ponerse en contacto con uno de nuestros asesores de venta y ellos le proporcionarán la licencia y todo lo que debe de saber para la configuración de sus formatos electrónicos.
-
-### Instalación
-
-Arrastrar el archivo "DGFmwrk.framework" a tu proyecto en Xcode, depués dirígete a la parte de Targets en tu proyecto y agrega en el apartado de "Embedded Binaries" y "Linked Frameworks and Libraries" el framework que acabas de arrastrar a tu proyecto. Deberás de usar el icono de + para agregar el framework a cada uno de los apartados, justo como se muestra en la siguiente imagen.
-
-![alt text](https://github.com/jviloriam/DIGIPROAPI/blob/master/images/embedded-binaries.digipro.png?raw=true)
-
-Ahora podrá hacer uso de cada uno de los componentes y funciones que tiene la aplicación pero antes de poderlo usar deberá de hacer unas configuraciones previas para que el API funcione adecuadamente.
-
-### Configuración básica
-
-Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicación ya contiene un "Settings.bundle" deberá de agregar los nuevos parámetros, estos parámetros los encontrará en el archivo ubicado en "adicionales/settings" o puede copiarlo desde el siguiente código.
-
-```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
@@ -352,5 +331,3 @@ Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicaci�
 	</array>
 </dict>
 </plist>
-```
-
