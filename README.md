@@ -382,17 +382,17 @@ Deberás de hacer uso de nuestra configuración para Google, esta configuración
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>539654860154-spl0edatqhi9aph30k8s00rm0d2b996l.apps.googleusercontent.com</string>
+	<string></string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.539654860154-spl0edatqhi9aph30k8s00rm0d2b996l</string>
+	<string></string>
 	<key>API_KEY</key>
-	<string>AIzaSyBQg096DOE0_ytHnrOqaJx_YRtGS858V44</string>
+	<string></string>
 	<key>GCM_SENDER_ID</key>
 	<string>539654860154</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.digipro.movil</string>
+	<string></string>
 	<key>PROJECT_ID</key>
 	<string>digipro-fct-elect</string>
 	<key>STORAGE_BUCKET</key>
@@ -408,16 +408,17 @@ Deberás de hacer uso de nuestra configuración para Google, esta configuración
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:539654860154:ios:8c4d59be8ca5304a</string>
+	<string></string>
 	<key>DATABASE_URL</key>
-	<string>https://digipro-fct-elect.firebaseio.com</string>
+	<string></string>
 	<key>FIRAnalyticsDebugEnabled</key>
 	<true/>
 </dict>
 </plist>
+
 ```
 
-
+Por motivos de seguridad los datos relacionados al API_KEY de Google fueron borrados, puedes usar tus datos o pedirlos a tu asesor de ventas.
 
 ### Uso básico
 
