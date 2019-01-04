@@ -26,7 +26,9 @@ Ahora podrá hacer uso de cada uno de los componentes y funciones que tiene la a
 
 ### Configuración básica
 
-Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicación ya contiene un "Settings.bundle" deberá de agregar los nuevos parámetros, estos parámetros los encontrará en el archivo ubicado en "adicionales/settings" o puede copiarlo desde el siguiente código.
+#### Settings
+
+Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicación ya contiene un "Settings.bundle" deberá de agregar los nuevos parámetros, estos parámetros los encontrará en el archivo ubicado en "adicionales/settings/Root.plist" o puede copiarlo desde el siguiente código:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -364,6 +366,59 @@ Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicaci�
 </plist>
 ```
 
+#### Google y Firebase
+
+Deberás de agregar un nuevo archivo llamado "GoogleService-Info.plist" este archivo es el que configura a Firebase y Google Maps, es de vital importancia que esté configurado y presente este archivo ya que es uno de los componentes principales en el API.
+
+Deberás de hacer uso de nuestra configuración para Google, esta configuración la encontrarás en el archivo ubicado en "adicionales/settings/GoogleService-Info.plist" o puede copiarlo desde el siguiente código:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>539654860154-spl0edatqhi9aph30k8s00rm0d2b996l.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.539654860154-spl0edatqhi9aph30k8s00rm0d2b996l</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBQg096DOE0_ytHnrOqaJx_YRtGS858V44</string>
+	<key>GCM_SENDER_ID</key>
+	<string>539654860154</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.digipro.movil</string>
+	<key>PROJECT_ID</key>
+	<string>digipro-fct-elect</string>
+	<key>STORAGE_BUCKET</key>
+	<string>digipro-fct-elect.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:539654860154:ios:8c4d59be8ca5304a</string>
+	<key>DATABASE_URL</key>
+	<string>https://digipro-fct-elect.firebaseio.com</string>
+	<key>FIRAnalyticsDebugEnabled</key>
+	<true/>
+</dict>
+</plist>
+```
+
+
+
 ### Uso básico
 
 Deberás de inicializar el API en tu "AppDelegate.swift" escribiendo el siguiente código:
@@ -384,4 +439,8 @@ func applicationDidBecomeActive(_ application: UIApplication) {
         ConfigurationManager.shared.utilities.checkPreferences()
     }
 ```
+
+Este código lo que configura es toda la estructura de archivos, datos, funciones y utilidades que se van a hacer uso en la aplicación.
+
+Y verifica si utiliza frameworks que ya utiliza el API y manda mensajes de advertencia para que el desarrollador pueda tomar una decisión de quitar o desinstalar el framework.
 
