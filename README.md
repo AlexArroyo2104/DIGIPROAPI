@@ -420,6 +420,74 @@ Deberás de hacer uso de nuestra configuración para Google, esta configuración
 
 Por motivos de seguridad los datos relacionados al API_KEY de Google fueron borrados, puedes usar tus datos o pedirlos a tu asesor de ventas.
 
+Si usa tus propias llaves para Google deberás de usar el siguiente código:
+
+```swift
+ConfigurationManager.shared.configure(googlePlacesKey: "AIzaSyCCyxWE5JZcZKkmEYX7ejSVmivsH4OoQ94", googleServicesKey: "AIzaSyCCyxWE5JZcZKkmEYX7ejSVmivsH4OoQ94")
+```
+
+Si no es tu caso deberás de usar la configuración normal o básica como en el siguiente ejemplo:
+
+```swift
+ConfigurationManager.shared.configure()
+```
+
+#### Info.plist
+
+Para el correcto funcionamiento del API y todas sus funcionalidades es necesario tomar en cuenta algunas configuraciones extra que deben de ir en el archivo "Info.plist" y son las siguientes:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>A Digipro le gustaría hacer uso de su cámara para uso exclusivo en la aplicación, es seguro y privado.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>A Digipro le gustaría hacer uso de su ubicación actual para mostrarla en la aplicación, es seguro y privado. Será usada para identificar la ubicación en que fué creado el Formato electrónico.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>A Digipro le gustaría hacer uso de su ubicación actual para mostrarla en la aplicación, es seguro y privado. Será usada para identificar la ubicación en que fué creado el Formato electrónico.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>A Digipro le gustaría hacer uso de su ubicación actual para mostrarla en la aplicación, es seguro y privado. Será usada para identificar la ubicación en que fué creado el Formato electrónico.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>A Digipro le gustaría hacer uso de su ubicación actual para mostrarla en la aplicación, es seguro y privado. Será usada para identificar la ubicación en que fué creado el Formato electrónico.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>A Digipro le gustaría hacer uso del micrófono para grabar audios para uso exclusivo en la aplicación, es seguro y privado.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>A Digipro le gustaría acceder a su librería de imágenes y hacer uso exclusivo en la aplicación, es seguro y privado.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>A Digipro le gustaría acceder a su librería de imágenes y hacer uso exclusivo en la aplicación, es seguro y privado.</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>edit-icon-c</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Crear nuevo formato</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Nuevo FE</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>nuevo.formato</string>
+		</dict>
+	</array>
+</dict>
+</plist>
+```
+
+
+
 ### Uso básico
 
 Deberás de inicializar el API en tu "AppDelegate.swift" escribiendo el siguiente código:
