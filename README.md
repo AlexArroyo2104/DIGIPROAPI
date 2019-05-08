@@ -1,7 +1,40 @@
-# SDK Formatos Electrónicos Digipro (The Digital Evolution Company)
+# SDK Formatos Electrónicos - Digipro
 
-&copy; DIGIPRO S.A de C.V.
-"Formatos electrónicos" es un API (Application programming interface) desarrollada por DIgipro - The digital evolution company para la generación, edición, visualización y envío de todo tipo de formatos (documentos de tipo formulario) para el procesamiento de datos adecuado sin la necesidad de utilizar papel (paperless), solamente con el uso de un dispositivo móvil IOS (iPhone / iPad) podrá generar formularios que se adecuen a las necesidades de su empresa.
+&copy;DIGIPRO S.A de C.V. Todos los derechos reservados
+
+"Formatos Electrónicos" (FE conocido por sus siglas en español) es un KDS (Kit de Desarrollo de Software también conocido como SDK por sus siglas en inglés) desarrollado por @copy;DIGIPRO S.A de C.V. para la generación, edición, visualización y envío de formatos electrónicos. Y para su procesamiento de datos adecuado sin la necesidad de utilizar papel (paperless), solamente con el uso de un dispositivo móvil IOS (iPhone/iPad) podrá generar formularios electrónicos que se adecuen a las necesidades de su empresa.
+
+## ¿Qué es un Formato Electrónico?
+
+Para @copy;DIGIPRO un formato electrónico es un conjunto de datos que necesitan ser procesados y valorados para cumplir un objetivo o requisito necesario para que la empresa pueda completar una serie de procesos y cumplir con una finalidad.
+
+El conjunto de datos pueden ser de los siguientes grupos:
+
+- Tipo Lineales:
+-- Texto
+-- Fecha
+-- Moneda
+-- Número
+-- Rango de Fecha
+-- Area de Texto
+-- Leyenda
+-- Logo
+-- Botón
+-- Wizard
+-- Lista
+- Tipo Anexos:
+-- Escaneo de Documentos
+-- Toma de Fotografía
+-- Toma de Video
+-- Toma de Audio
+-- Toma de Geolocalización
+-- Reconocimiento de Texto
+-- Firma Autografa Digital (FDA)
+- Tipo Biométricos:
+-- Escaneao de Huellas
+-- Escaneo de Rostro y verificación de rostro en vivo (livenessface)
+- Tipo Especiales:
+-- Elementos contenedores y de tipo tabla
 
 [TOC]
 
