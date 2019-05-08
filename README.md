@@ -1,5 +1,6 @@
-# Api formatos electrónicos
+# SDK Formatos Electrónicos Digipro (The Digital Evolution Company)
 
+&copy; DIGIPRO S.A de C.V.
 "Formatos electrónicos" es un API (Application programming interface) desarrollada por DIgipro - The digital evolution company para la generación, edición, visualización y envío de todo tipo de formatos (documentos de tipo formulario) para el procesamiento de datos adecuado sin la necesidad de utilizar papel (paperless), solamente con el uso de un dispositivo móvil IOS (iPhone / iPad) podrá generar formularios que se adecuen a las necesidades de su empresa.
 
 [TOC]
