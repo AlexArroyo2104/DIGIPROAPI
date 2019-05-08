@@ -1,0 +1,11 @@
+framework module DIGIPROSDKSSO {
+  umbrella header "DIGIPROSDKSSO.h"
+
+  export *
+  module * { export * }
+}
+
+module DIGIPROSDKSSO.Swift {
+    header "DIGIPROSDKSSO-Swift.h"
+    requires objc
+}

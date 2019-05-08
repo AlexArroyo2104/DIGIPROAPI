@@ -1,0 +1,11 @@
+framework module DIGIPROSDKFO {
+  umbrella header "DIGIPROSDKFO.h"
+
+  export *
+  module * { export * }
+}
+
+module DIGIPROSDKFO.Swift {
+    header "DIGIPROSDKFO-Swift.h"
+    requires objc
+}

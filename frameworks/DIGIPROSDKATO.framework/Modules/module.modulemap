@@ -1,0 +1,11 @@
+framework module DIGIPROSDKATO {
+  umbrella header "DIGIPROSDKATO.h"
+
+  export *
+  module * { export * }
+}
+
+module DIGIPROSDKATO.Swift {
+    header "DIGIPROSDKATO-Swift.h"
+    requires objc
+}

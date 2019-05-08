@@ -62,19 +62,21 @@ Ahora, para hacer uso de cada uno de los componentes y funciones que tiene la ap
 
 El SDK está compuesto por 7 módulos que son los que abren las posibilidades de crear formatos electrónicos mucho más complejos, a continuación se dará una breve explicación de cada módulo.
 
-Módulo - DIGIPROSDK: Este framework es el CORE del SDK, es necesario tener este instalado para poder iniciar la aplicación.
+Por el momento alguno de los frameworks no funcionan usando el simulador de Xcode y solamente funcionan usando un dispositivo IOS.
 
-Módulo - DIGIPROSDKSO: Contiene los elementos básicos y lineales de formatos electrónicos.
+**Módulo - DIGIPROSDK:** *Este framework es el CORE del SDK, es necesario tener este instalado para poder iniciar la aplicación.*
 
-Módulo - DIGIPROSDKSSO:  Contiene los elementos de servicios y métodos de formatos electrónicos.
+**Módulo - DIGIPROSDKSO:** *Contiene los elementos básicos y lineales de formatos electrónicos.*
 
-Módulo - DIGIPROSDKATO: Contiene los elementos de tipo anexos de formatos electrónicos.
+**Módulo - DIGIPROSDKSSO:** *Contiene los elementos de servicios y métodos de formatos electrónicos.*
 
-Módulo - DIGIPROSDKVO: Contiene el elemento biométrico de escaneo de huella.
+**Módulo - DIGIPROSDKATO:** *Contiene los elementos de tipo anexos de formatos electrónicos.*
 
-Módulo - DIGIPROSDKFO: Contiene el elemento biométrico de detección de rostro.
+**Módulo - DIGIPROSDKVO:** *Contiene el elemento biométrico de escaneo de huella.*
 
-Módulo - DIGIPROSDKUI: Contiene las interfaces de toda la aplicación.
+**Módulo - DIGIPROSDKFO:** *Contiene el elemento biométrico de detección de rostro.*
+
+**Módulo - DIGIPROSDKUI:** *Contiene las interfaces de toda la aplicación.*
 
 ### Configuración básica
 

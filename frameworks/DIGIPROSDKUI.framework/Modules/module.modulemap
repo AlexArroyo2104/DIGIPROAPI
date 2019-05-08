@@ -1,0 +1,11 @@
+framework module DIGIPROSDKUI {
+  umbrella header "DIGIPROSDKUI.h"
+
+  export *
+  module * { export * }
+}
+
+module DIGIPROSDKUI.Swift {
+    header "DIGIPROSDKUI-Swift.h"
+    requires objc
+}

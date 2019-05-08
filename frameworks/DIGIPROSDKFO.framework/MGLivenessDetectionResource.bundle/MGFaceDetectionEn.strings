@@ -1,0 +1,31 @@
+/* 
+  MGFaceDetection.strings
+  MegLiveDemo
+
+  Created by Megvii on 2017/5/26.
+  Copyright © 2017Year megvii. All rights reserved.
+*/
+
+"face_check_error1" = "Mantenga su teléfono verticalmente";
+"face_check_error2" = "Cara no encontrada";
+"face_check_error3" = "Cara no encontrada";
+"face_check_error4" = "Cara no encontrada";
+"face_check_error5" = "Cara demasiado oscura";
+"face_check_error6" = "Cara demasiado brillante";
+"face_check_error7" = "Cara demasiado pequeña";
+"face_check_error8" = "Cara demasiado grande";
+"face_check_error9" = "Evite la luz lateral o la luz de fondo";
+"face_check_error10" = "Cara fuera de cuadro";
+"face_check_error11" = "Mantener la pose";
+"face_check_error12" = "Muéstrame tus ojos";
+"face_check_error13" = "Muéstrame tu boca";
+
+"face_check_title" = "Finalizar";
+"face_check_title1" = "Mantenga su cara en el marco";
+"face_check_title2" = "Mantener la pose";
+"face_check_title3" = "Detectar acabado";
+
+"face_check_eye" = "Parpadeé";
+"face_check_mouse" = "Abre la boca";
+"face_check_header_3" = "Mueve la cabeza";
+"face_check_header_1" = "Asiente con la cabeza";
