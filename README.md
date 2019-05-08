@@ -50,25 +50,46 @@ El SDK hace uso diferentes herramientas que facilitan la creación de los format
 - Swift 4.2
 - IOS 11.0
 
-### Instalación
+### Previsualización
 
-Arrastrar el archivo "DGFmwrk.framework" a tu proyecto en Xcode, depués dirígete a la parte de Targets en tu proyecto y agrega en el apartado de "Embedded Binaries" y "Linked Frameworks and Libraries" el framework que acabas de arrastrar a tu proyecto. Deberás de usar el icono de + para agregar el framework a cada uno de los apartados, justo como se muestra en la siguiente imagen.
+Aquí te damos una prueba muy significativa de como se visualiza un formato electrónico usando el SDK.
 
 ![alt text](https://github.com/jviloriam/DIGIPROAPI/blob/master/videos/intro.gif?raw=true)
 
-Ahora podrá hacer uso de cada uno de los componentes y funciones que tiene la aplicación pero antes de poderlo usar deberá de hacer unas configuraciones previas para que el API funcione adecuadamente.
+Ahora, para hacer uso de cada uno de los componentes y funciones que tiene la aplicación deberá de instalarlo y hacer unas configuraciones básicas para que el SDK funcione adecuadamente.
+
+### Instalación
+
+El SDK está compuesto por 7 módulos que son los que abren las posibilidades de crear formatos electrónicos mucho más complejos, a continuación se dará una breve explicación de cada módulo.
+
+Módulo - DIGIPROSDK: Este framework es el CORE del SDK, es necesario tener este instalado para poder iniciar la aplicación.
+
+Módulo - DIGIPROSDKSO: Contiene los elementos básicos y lineales de formatos electrónicos.
+
+Módulo - DIGIPROSDKSSO:  Contiene los elementos de servicios y métodos de formatos electrónicos.
+
+Módulo - DIGIPROSDKATO: Contiene los elementos de tipo anexos de formatos electrónicos.
+
+Módulo - DIGIPROSDKVO: Contiene el elemento biométrico de escaneo de huella.
+
+Módulo - DIGIPROSDKFO: Contiene el elemento biométrico de detección de rostro.
+
+Módulo - DIGIPROSDKUI: Contiene las interfaces de toda la aplicación.
 
 ### Configuración básica
 
-#### Settings
+Deberás de agregar los frameworks que necesitas a tu aplicación en la parte de "Embedded Binaries" en los ajustes de la aplicación. Justo como se muestra en la siguiente imagen. (Dependerá de cada framework de Digipro agregado el número de frameworks adicionales a usar).
 
-Crear un nuevo archivo de "Settings.bundle" para la aplicación, si su aplicación ya contiene un "Settings.bundle" deberá de agregar los nuevos parámetros, estos parámetros los encontrará en el archivo ubicado en "adicionales/settings/Root.plist" o puede copiarlo desde el siguiente código:
+![Frameworks](https://github.com/jviloriam/DIGIPROAPI/blob/master/images/frameworks.png?raw=true)
 
 ### Uso básico
 
 Deberás de inicializar el API en tu "AppDelegate.swift" escribiendo el siguiente código:
 
 ```swift
+
+import DIGIPROSDK
+
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         _ = ConfigurationManager.shared
