@@ -210,6 +210,8 @@ Para poder empezar a usar el SDK y todos los componentes es necesario hacer dos 
 
 Para poder logearse con un código empresarial es necesario utilizar el siguiente código, este código únicamente sirve como ejemplo de como realizar el login.
 
+
+##### Login Código
 ```swift
 
 import UIKit
@@ -274,3 +276,297 @@ class ViewController: UIViewController, APIDelegate {
 }
 
 ```
+
+##### Login User
+
+Este es el código utilizado para poder logear al usuario
+
+```swift
+
+import UIKit
+
+// DIGIPROSDK
+import DIGIPROSDK
+import DIGIPROSDKUI
+
+class ViewController: UIViewController, APIDelegate {
+    func sendStatus(message: String, error: String, isLog: Bool, isNotification: Bool) {
+        
+    }
+    
+    func sendStatusCompletition(initial: Float, current: Float, final: Float) {
+        
+    }
+    
+    func sendStatusCodeMessage(message: String, error: String) {
+        
+    }
+    
+    func didSendError(message: String, error: String) {
+        
+    }
+    
+    func didSendResponse(message: String, error: String) {
+        
+    }
+    
+    func didSendResponseHUD(message: String, error: String, porcentage: Int) {
+        
+    }
+    
+    public func didSendResponseStatus(title: String, subtitle: String, porcentage: Float){
+        // This is for get every single format status.
+    }
+
+    var sdkAPI : APIManager<ViewController>?
+    var arrayPlantillaData = Array<(String, Array<FEPlantillaData>)>()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        // Init SDK Protocol
+        self.sdkAPI = APIManager<ViewController>()
+        self.sdkAPI?.delegate = self
+        
+        // This is the user input code, you need to uppercased the input.
+        ConfigurationManager.shared.codigoUIAppDelegate.Codigo = "abc".uppercased()
+        
+        // This is a usual or common Promise to get the answer for every action from the server.
+        self.sdkAPI?.validCodeOnlinePromise(delegate: self)
+            .then{ response in
+                print(response)
+                print("Código validado.")
+                // Futher code to login the user
+                // You do not need to login the code and the user in the same view controller, that depends of your app flow or your needs.
+                
+                
+                // User Login
+                let lUser = "arturog"
+                let lPassword = "tester"
+                
+                var password = Array(lPassword.utf8)
+                password = password.sha512()
+                let passwordString = password.toBase64()
+                ConfigurationManager.shared.usuarioUIAppDelegate.Password = passwordString!
+                
+                let pass = Array(lPassword.utf8)
+                let passwordBase = pass.toBase64()
+                ConfigurationManager.shared.usuarioUIAppDelegate.PasswordEncoded = passwordBase!
+                ConfigurationManager.shared.usuarioUIAppDelegate.User = lUser
+                ConfigurationManager.shared.usuarioUIAppDelegate.IP = ConfigurationManager.shared.utilities.getIPAddress()
+                ConfigurationManager.shared.usuarioUIAppDelegate.AplicacionID = ConfigurationManager.shared.codigoUIAppDelegate.AplicacionID
+                ConfigurationManager.shared.usuarioUIAppDelegate.ProyectoID = ConfigurationManager.shared.codigoUIAppDelegate.ProyectoID
+                
+                
+                self.sdkAPI?.validUserOnlinePromise(delegate: self)
+                    .then{ response in
+                        print(response)
+                        print("User logged")
+                        
+                    }
+                    .catch{ error in
+                        print(error)
+                        print("There was an error.")
+                    }
+            }
+            .catch{ error in
+                print(error)
+                print("There was an error.")
+            }
+        
+    }
+
+
+}
+
+```
+
+Ya que se obtienen los accesos a cada uno de los login, ahora procederemos a descargar los datos adicionales para la aplicación y mandar a visualizar nuestra primera plantilla o formato vacio.
+
+Este es el código final para poder obtener la primera plantilla encontrada y visualizarla.
+
+```swift
+
+import UIKit
+
+// DIGIPROSDK
+import DIGIPROSDK
+import DIGIPROSDKUI
+
+class ViewController: UIViewController, APIDelegate {
+    func sendStatus(message: String, error: String, isLog: Bool, isNotification: Bool) {
+        
+    }
+    
+    func sendStatusCompletition(initial: Float, current: Float, final: Float) {
+        
+    }
+    
+    func sendStatusCodeMessage(message: String, error: String) {
+        
+    }
+    
+    func didSendError(message: String, error: String) {
+        
+    }
+    
+    func didSendResponse(message: String, error: String) {
+        
+    }
+    
+    func didSendResponseHUD(message: String, error: String, porcentage: Int) {
+        
+    }
+    
+    public func didSendResponseStatus(title: String, subtitle: String, porcentage: Float){
+        // This is for get every single format status.
+    }
+
+    var sdkAPI : APIManager<ViewController>?
+    var arrayPlantillaData = Array<(String, Array<FEPlantillaData>)>()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        // Init SDK Protocol
+        self.sdkAPI = APIManager<ViewController>()
+        self.sdkAPI?.delegate = self
+        
+        // This is the user input code, you need to uppercased the input.
+        ConfigurationManager.shared.codigoUIAppDelegate.Codigo = "abc".uppercased()
+        
+        // This is a usual or common Promise to get the answer for every action from the server.
+        self.sdkAPI?.validCodeOnlinePromise(delegate: self)
+            .then{ response in
+                print(response)
+                print("Código validado.")
+                // Futher code to login the user
+                // You do not need to login the code and the user in the same view controller, that depends of your app flow or your needs.
+                
+                
+                // User Login
+                let lUser = "arturog"
+                let lPassword = "tester"
+                
+                var password = Array(lPassword.utf8)
+                password = password.sha512()
+                let passwordString = password.toBase64()
+                ConfigurationManager.shared.usuarioUIAppDelegate.Password = passwordString!
+                
+                let pass = Array(lPassword.utf8)
+                let passwordBase = pass.toBase64()
+                ConfigurationManager.shared.usuarioUIAppDelegate.PasswordEncoded = passwordBase!
+                ConfigurationManager.shared.usuarioUIAppDelegate.User = lUser
+                ConfigurationManager.shared.usuarioUIAppDelegate.IP = ConfigurationManager.shared.utilities.getIPAddress()
+                ConfigurationManager.shared.usuarioUIAppDelegate.AplicacionID = ConfigurationManager.shared.codigoUIAppDelegate.AplicacionID
+                ConfigurationManager.shared.usuarioUIAppDelegate.ProyectoID = ConfigurationManager.shared.codigoUIAppDelegate.ProyectoID
+                
+                
+                self.sdkAPI?.validUserOnlinePromise(delegate: self)
+                    .then{ response in
+                        print(response)
+                        print("User logged")
+                        
+                        // Now we need to download all data reated to the user (formats, template and data related)
+                        ConfigurationManager.shared.isInitiated = true
+                        // Step 1 Check "PLANTILLAS"
+                        self.sdkAPI?.validaPlantillasOnlinePromise(delegate: self)
+                            .then{ response in
+                                print(response)
+                                print("Plantillas validadas")
+                                
+                                self.sdkAPI?.validaVariablesOnlinePromise(delegate: self)
+                                    .then { response in
+                                        
+                                        print(response)
+                                        print("Variables validadas")
+                                        
+                                         self.sdkAPI?.validFormatosOnlinePromise(delegate: self)
+                                            .then { response in
+
+                                                print(response)
+                                                print("Formatos validados")
+                                                
+                                                // Now you can load a single template, if you know the data.
+                                                // If not you can load or call different functions to get every data storaged on the device.
+                                                self.popNewForm()
+                                                
+                                            }
+                                            .catch { error in
+                                                print(error)
+                                                print("There was an error.")
+                                            }
+                                    }
+                                    .catch { error in
+                                        print(error)
+                                        print("There was an error.")
+                                    }
+                            }
+                            .catch{ error in
+                                print(error)
+                                print("There was an error.")
+                            }
+                    }
+                    .catch{ error in
+                        print(error)
+                        print("There was an error.")
+                    }
+            }
+            .catch{ error in
+                print(error)
+                print("There was an error.")
+            }
+        
+    }
+
+
+}
+
+
+extension ViewController{
+    
+    func popNewForm(){
+        
+        
+        self.sdkAPI?.validFlujosAndProcesosPromise(delegate: self)
+            .then { response in
+                print(response)
+                print("Templates obtenidos")
+                FormularioUtilities.shared.globalFlujo = ConfigurationManager.shared.flujosOrdered[0].FlujoID
+                // Get all Template in Array
+                self.arrayPlantillaData = (self.sdkAPI?.getPlantillasBySections(String(FormularioUtilities.shared.globalFlujo)))!
+                
+                let destination = NuevaPlantillaViewController.init(nibName: "NuevaPlantillaViewController", bundle: Cnstnt.Path.ui)
+                destination.modalTransitionStyle = .coverVertical
+                destination.modalPresentationStyle = .overFullScreen
+                let navigation = UINavigationController(rootViewController: destination)
+                FormularioUtilities.shared.currentFormato = FEFormatoData()
+                FormularioUtilities.shared.currentFormato.FlujoID = self.arrayPlantillaData[0].1[0].FlujoID
+                FormularioUtilities.shared.currentFormato.TipoDocID = self.arrayPlantillaData[0].1[0].TipoDocID
+                FormularioUtilities.shared.currentFormato.ExpID = self.arrayPlantillaData[0].1[0].ExpID
+                destination.index = 0
+                destination.flujo = self.arrayPlantillaData[0].1[0].FlujoID
+                destination.proceso = 0
+                destination.navigation = navigation
+                destination.arrayPlantillaData = self.arrayPlantillaData[0].1[0]
+                
+                self.present(navigation, animated: true, completion: nil)
+            }
+            .catch { error in
+                print(error)
+                print("There was an error.")
+            }
+        
+        
+    }
+    
+}
+
+```
+
+### DEMO
+
+Si tienes problemas con el código puedes descargar el proyecto "Demo" para que puedas ver el funcionamiento sin necesidad de copiar y pegar. Solamente deberás de ir a la carpeta de "demo" y descargar el proyecto.
+
