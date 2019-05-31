@@ -84,6 +84,10 @@ Deberás de agregar los frameworks que necesitas a tu aplicación en la parte de
 
 ![Frameworks](https://github.com/jviloriam/DIGIPROAPI/blob/master/images/frameworks.png?raw=true)
 
+En el "Build Settings" de tu aplicación busca la propiedad **Enable Bitcode** y cámbialo a NO ya que ningúno de los frameworks soporta por el momento reconstruir el código Bitcode.
+
+![Bitcode](https://github.com/jviloriam/DIGIPROAPI/blob/master/images/bitcode.png?raw=true)
+
 ### Uso básico
 
 Deberás de inicializar el API en tu "AppDelegate.swift" escribiendo el siguiente código:
@@ -111,4 +115,90 @@ func applicationDidBecomeActive(_ application: UIApplication) {
 Este código lo que configura es toda la estructura de archivos, datos, funciones y utilidades que se van a hacer uso en la aplicación.
 
 Y verifica si utiliza frameworks que ya utiliza el API y manda mensajes de advertencia para que el desarrollador pueda tomar una decisión de quitar o desinstalar el framework.
+
+### AppDelegate
+
+Así es como debería de quedar tu AppDelegate con la configuración básica del SDK
+```swift
+
+import UIKit
+
+// PODS
+import Firebase
+import GoogleMaps
+import GooglePlaces
+
+// DIGIPROSDK
+import DIGIPROSDK
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        
+        // Initilization of DigiproSDK
+        configureDigipro()
+        ConfigurationManager.shared.uiapplication = application
+        ConfigurationManager.shared.launchOptions = launchOptions
+        configure4F()
+        
+        return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+
+extension AppDelegate{
+    
+    func configureDigipro(){
+        // Google And Facebook Init
+        
+        #warning("Set Google API KEY for Google Maps nad Places.")
+        // This confi
+        GMSPlacesClient.provideAPIKey("")
+        GMSServices.provideAPIKey("")
+        
+        #warning("Set Firebase configuration, you need \"GoogleService-Info.plist\" with your product bundle ID.")
+        FirebaseApp.configure()
+        
+        _ = ConfigurationManager.shared
+        _ = FormularioUtilities.shared
+        ConfigurationManager.shared.configure()
+        
+        // Here you can launch any Splash Screen/Loading Screen/Login Screen
+        // By default you can let Xcode laund the Storyboard
+    }
+    
+    func configure4F(){
+        // Here is the Veridium Licence and Configuration, the code is provided only if the licence is provided.
+    }
+    
+}
+```
 
