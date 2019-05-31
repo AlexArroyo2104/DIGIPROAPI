@@ -196,9 +196,81 @@ extension AppDelegate{
     }
     
     func configure4F(){
-        // Here is the Veridium Licence and Configuration, the code is provided only if the licence is provided.
+        // Here is the 4F Licence and Configuration, the code is provided only if the licence is provided.
     }
     
 }
 ```
 
+#### Inicio de la aplicación
+
+Para poder empezar a usar el SDK y todos los componentes es necesario hacer dos tipos de login:
+1: Logearse al código de empresa o código de aplicación.
+2: Logearse a nivel usuario
+
+Para poder logearse con un código empresarial es necesario utilizar el siguiente código, este código únicamente sirve como ejemplo de como realizar el login.
+
+```swift
+
+import UIKit
+
+// DIGIPROSDK
+import DIGIPROSDK
+
+class ViewController: UIViewController, APIDelegate {
+    func sendStatus(message: String, error: String, isLog: Bool, isNotification: Bool) {
+        
+    }
+    
+    func sendStatusCompletition(initial: Float, current: Float, final: Float) {
+        
+    }
+    
+    func sendStatusCodeMessage(message: String, error: String) {
+        
+    }
+    
+    func didSendError(message: String, error: String) {
+        
+    }
+    
+    func didSendResponse(message: String, error: String) {
+        
+    }
+    
+    func didSendResponseHUD(message: String, error: String, porcentage: Int) {
+        
+    }
+    
+
+    var sdkAPI : APIManager<ViewController>?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+        
+        // Init SDK Protocol
+        self.sdkAPI = APIManager<ViewController>()
+        self.sdkAPI?.delegate = self
+        
+        // This is the user input code, you need to uppercased the input.
+        ConfigurationManager.shared.codigoUIAppDelegate.Codigo = "abc".uppercased()
+        
+        // This is a usual or common Promise to get the answer for every action from the server.
+        self.sdkAPI?.validCodeOnlinePromise(delegate: self)
+            .then{ response in
+                print(response)
+                print("Código validado.")
+                // Realizar acción al validar el código
+            }
+            .catch{ error in
+                print(error)
+                print("There was an error.")
+            }
+        
+    }
+
+
+}
+
+```
