@@ -1,0 +1,258 @@
+# Flujo Login Genérico SDK - Digipro
+
+##### Implementación del flujo en nuestra aplicación.
+
+###### Primera vista a configurar para el flujo genérico.
+
+El primer paso es importar a nuestro proyecto las siguientes librerias:
+``` swift
+import DIGIPROSDK
+import DIGIPROSDKUI
+```
+
+Una vez importadas las librerias en el viewController a utilizar, escribimos el siguiente código para dar inicio a nuestra aplicación:
+
+
+``` swift
+import UIKit
+import DIGIPROSDK
+import DIGIPROSDKUI
+
+class SplashSDKViewController: UIViewController {
+    
+    //Variables de controlador
+    var sdkAPI : APIManager<SplashSDKViewController>?
+    var splashView: SplashSDK?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = true
+        //se inicializan variables con el protocolo generico del framework en nuestro viewController
+        self.splashView?.sdkAPI.delegate = self.sdkAPI?.delegate
+        self.sdkAPI = APIManager<SplashSDKViewController>()
+        self.sdkAPI?.delegate = self
+
+        // Do any additional setup after loading the view.
+    }
+```
+
+###### En esta parte de nuestro controlador, en el viewDidAppear inicializamos el view genérico desde el SDK, configuramos la vista y lo agregamos a la vista padre de nuestro controlador
+_
+``` swift
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        self.splashView = SplashSDK(frame: self.view.bounds)
+        self.splashView!.center.x = view.center.x
+        self.splashView!.center.y = view.center.y
+        self.splashView?.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        self.splashView?.centerYAnchor.constraint(equalTo: self.view.centerYAnchor)
+        self.splashView!.sdkAPI.delegate = self.sdkAPI?.delegate!
+        view.addSubview(self.splashView!)
+        
+    }
+    
+    //removemos la vista de nuestro controlador para que no consuma memoria.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.splashView?.removeFromSuperview()
+    }
+
+}
+```
+###### Se hace un extension en nuestra clase al delegado APIDelegate, el cual nos pedira que agreguemos los metodos para obtener las respuestas de los servicios
+_
+
+``` swift
+extension SplashSDKViewController: APIDelegate{
+    func sendStatus(message: String, error: String, isLog: Bool, isNotification: Bool) {
+    }
+    
+    func sendStatusCompletition(initial: Float, current: Float, final: Float) {
+    }
+    
+    func sendStatusCodeMessage(message: String, error: String) {
+    }
+    
+    func didSendError(message: String, error: String) {
+    }
+    
+    func didSendResponse(message: String, error: String) {
+    }
+    
+    func didSendResponseHUD(message: String, error: String, porcentage: Int) {
+    }
+    
+    ///// En este metodo es donde recibimos la respuesta del servicio y hacemos la navegación al siguiente controlador
+    
+    func responseSplash(message: String) {
+        self.navigationController?.pushViewController(CodeNewLoginViewController(), animated: true)
+    }
+    
+}
+
+```
+
+###### Segunda vista a configurar para el flujo genérico.
+_
+
+``` swift
+import UIKit
+import DIGIPROSDK
+import DIGIPROSDKUI
+
+class CodeNewLoginViewController: UIViewController {
+    
+    var sdkAPI : APIManager<CodeNewLoginViewController>?
+    var codeView: CodeView?
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.navigationController?.isNavigationBarHidden = false
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.topItem?.title = "Proveedor"
+        self.codeView?.sdkAPI.delegate = self.sdkAPI?.delegate
+        self.sdkAPI = APIManager<CodeNewLoginViewController>()
+        self.sdkAPI?.delegate = self
+        
+    }
+```
+_
+```swift
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        
+        self.codeView = CodeView(frame: self.view.bounds)
+        self.codeView!.center.x = view.center.x
+        self.codeView!.center.y = view.center.y
+        self.codeView?.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+        self.codeView?.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        self.codeView!.sdkAPI.delegate = self.sdkAPI?.delegate!
+        view.addSubview(self.codeView!)
+    }
+    
+    //removemos la vista de nuestro controlador para que no consuma memoria.
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        self.codeView?.removeFromSuperview()
+    }
+
+```
+###### Se hace un extension en nuestra clase al delegado APIDelegate, el cual nos pedira que agreguemos los metodos para obtener las respuestas de los servicios
+_
+```swift
+
+extension CodeNewLoginViewController: APIDelegate{
+    func sendStatus(message: String, error: String, isLog: Bool, isNotification: Bool) {
+    }
+    
+    func sendStatusCompletition(initial: Float, current: Float, final: Float) {
+    }
+    
+    func didSendError(message: String, error: String) {
+    }
+    
+    func didSendResponse(message: String, error: String) {
+    }
+    
+    func didSendResponseHUD(message: String, error: String, porcentage: Int) {
+    }
+  ```
+   En este metodo es donde recibimos la respuesta del servicio y manejamos la respuesta si fue erronea o satisfactoria, para las acciones a realizar.
+  _
+```swift
+    func sendStatusCodeMessage(message: String, error: String) {
+        print("Message: \(message)\n Error: \(error)")
+        if message.isEmpty{
+            print("Error: \(error)")
+        }else{
+            self.navigationController?.pushViewController(UserNewLoginViewController(), animated: true)
+        }
+    }
+}
+
+```
+
+###### Tercera y última vista a configurar para el flujo genérico.
+_
+
+```swift
+import UIKit
+import DIGIPROSDK
+import DIGIPROSDKUI
+
+class UserNewLoginViewController: UIViewController {
+    
+    //Variables de controlador
+    var sdkAPI : APIManager<UserNewLoginViewController>?
+    var loginView: LoginView?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //se inicializan variables con el protocolo generico del framework en nuestro
+        self.loginView?.sdkAPI.delegate = self.sdkAPI?.delegate
+        self.sdkAPI = APIManager<UserNewLoginViewController>()
+        self.sdkAPI?.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        self.loginView = LoginView(frame: self.view.bounds)
+        self.loginView!.center.x = view.center.x
+        self.loginView!.center.y = view.center.y
+        let downloadImage = UIImage(named: "logo-digipro") ?? UIImage()
+        self.loginView!.set(image: downloadImage)
+        self.loginView!.set(title: "¡Bienvenido!\n\nPor favor escriba su usuario y contraseña para ingresar")
+        self.loginView?.sdkAPI.delegate = self.sdkAPI?.delegate!
+        view.addSubview(loginView!)
+        
+        
+    }
+
+}
+```
+
+###### Se hace un extension en nuestra clase al delegado APIDelegate, el cual nos pedira que agreguemos los metodos para obtener las respuestas de los servicios
+_
+```swift
+extension UserNewLoginViewController: APIDelegate{
+    func sendStatus(message: String, error: String, isLog: Bool, isNotification: Bool) {
+        
+    }
+    
+    func sendStatusCompletition(initial: Float, current: Float, final: Float) {
+        
+    }
+    
+    func didSendError(message: String, error: String) {
+        
+    }
+    
+    func didSendResponse(message: String, error: String) {
+        
+    }
+    
+    func didSendResponseHUD(message: String, error: String, porcentage: Int) {
+        
+    }
+  
+```
+   En este metodo es donde recibimos la respuesta del servicio y manejamos la respuesta si fue erronea o satisfactoria, para las acciones a realizar.
+  _
+```swift
+    
+    func sendStatusCodeMessage(message: String, error: String) {
+        print("Message: \(message)\n Error: \(error)")
+        guard let navController = self.parent else {
+            return
+        }
+        AlertNewViewController.show(in: navController, title: "Bienvenido", subtitle: "Acceso Correcto", completion: nil)
+    }
+    
+    
+}
+```
